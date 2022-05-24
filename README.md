@@ -3,6 +3,8 @@
 We'll use this as a springboard to explore the main facets of ReactJS:
 
 - components
-- input
-- expression
-- local state
+- expressions
+- JSON.stringify
+- input basics
+- -local state
+- conditional rendering
