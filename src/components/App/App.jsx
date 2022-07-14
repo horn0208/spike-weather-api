@@ -23,7 +23,7 @@ function App() {
     gridX: 121,
     gridY: 99
   };
-
+  // hook for today's forecast info
   const [today, setToday] = useState('default');
 
   //GET weather forecast from gridpoints
@@ -35,8 +35,6 @@ function App() {
       console.log('forecasts for 14 periods', response.data.properties.periods);//an array of objects
       console.log('today forecast object', response.data.properties.periods[0]);
       setToday(response.data.properties.periods[0]);
-      // console.log('today:', today);
-      // console.log('today details', today.detailedForecast);
   
     }).catch((err)=>{
       console.log(err);
@@ -51,8 +49,9 @@ function App() {
           <h1 className="App-title">Weather API Spike!</h1>
         </header>
         <div>
+          <img src={today.icon} alt="weather image" />
           <p>
-           {today.detailedForecast}
+           Today's weather: {today.detailedForecast}
           </p>
         </div>
       </div>
