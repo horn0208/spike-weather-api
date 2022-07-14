@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
-router.get('/forecast', (req, res)=>{
-    console.log('in /forecast GET');
-    res.send('data!');
-});
+//ignore all this for now
+// router.get('/forecast', (req, res)=>{
+//     console.log('in /forecast GET:', req.query.office);
+    
+// });
 
 
 module.exports=router;
