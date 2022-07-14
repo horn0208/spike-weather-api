@@ -9,7 +9,7 @@ function App() {
     getForecast();
   }, []);
 
-  // solo proj structure:
+  // solo proj structure will be different:
   // 1. on page load, send area_id to saga (may need to do async in useEffect)
   // 2. in saga: 
       //yield get office, grids from 'areas' table in db using area_id
@@ -24,12 +24,19 @@ function App() {
     gridY: 99
   };
 
+  const [today, setToday] = useState('default');
+
   //GET weather forecast from gridpoints
   const getForecast=()=>{
     axios.get(`https://api.weather.gov/gridpoints/${areaParams.office}/${areaParams.gridX},${areaParams.gridY}/forecast`)
     .then((response)=>{
       console.log('back from forecast:', response.data);
       //then figure out how to display on DOM...
+      console.log('forecasts for 14 periods', response.data.properties.periods);//an array of objects
+      console.log('today forecast object', response.data.properties.periods[0]);
+      setToday(response.data.properties.periods[0]);
+      // console.log('today:', today);
+      // console.log('today details', today.detailedForecast);
   
     }).catch((err)=>{
       console.log(err);
@@ -41,11 +48,11 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Dorian React Intro</h1>
+          <h1 className="App-title">Weather API Spike!</h1>
         </header>
         <div>
           <p>
-            body text
+           {today.detailedForecast}
           </p>
         </div>
       </div>
